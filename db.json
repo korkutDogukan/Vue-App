@@ -1,0 +1,30 @@
+{
+  "users": [
+    {
+      "userName": "dogukan",
+      "password": "123",
+      "id": 1
+    }
+  ],
+  "itemList": [
+    {
+      "text": "wd",
+      "itemId": 1642348799959,
+      "userId": 1,
+      "id": 1
+    },
+    {
+      "text": "qwd",
+      "itemId": 1642348800830,
+      "userId": 1,
+      "id": 2
+    },
+    {
+      "text": "fq",
+      "itemId": 1642348801557,
+      "userId": 1,
+      "id": 3
+    }
+  ],
+  "favList": []
+}
