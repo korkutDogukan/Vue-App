@@ -8,7 +8,7 @@
         <tr>
           <td>Username</td>
           <td>:</td>
-          <td>{{ store.getters._getCurrentUser.userName }}</td>
+          <td>{{ store.getters._getCurrentUser.username }}</td>
         </tr>
         <tr>
           <td>Password</td>

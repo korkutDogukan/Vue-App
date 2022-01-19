@@ -10,10 +10,10 @@
     </div>
     <div class="col">
       <div @click="goList" class="sectionCard card-1">
-        <h3>List App</h3>
+        <h3>List</h3>
       </div>
-      <div class="sectionCard card-2">
-        <h3>List App</h3>
+      <div @click="goFastTyping" class="sectionCard card-2">
+        <h3>FastTyping</h3>
       </div>
       <div class="sectionCard card-3">
         <h3>List App</h3>
@@ -28,6 +28,12 @@
 import { useRouter } from "vue-router";
 
 const router = useRouter();
+
+const goFastTyping = () => {
+  setTimeout(() => {
+    router.push({ name: "FastTypingPage" });
+  }, 150);
+};
 
 const goList = () => {
   setTimeout(() => {

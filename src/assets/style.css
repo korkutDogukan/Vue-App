@@ -205,11 +205,18 @@ form .input-box {
     box-sizing: border-box;
     cursor: pointer;
     margin: 40px 50px;
-    background-image: url("./img/todoList.jpg");
     background-position: center;
     background-size: cover;
     transition: transform 0.8s;
     box-shadow: 0 0 40px 25px rgba(167, 152, 152, 0.26);
+}
+
+.card-1 {
+    background-image: url("./img/todoList.jpg");
+}
+
+.card-2 {
+    background-image: url("./img/keyboard.jpg");
 }
 
 .container .sectionCard:hover {
@@ -370,6 +377,18 @@ form .input-box {
     top: 13px;
     left: 0;
     transform: rotate(-45deg)
+}
+
+
+/* FASTTYPİNG */
+
+.fastTypingContainer {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.5)),url(./img/fastTypingBackground.jpg);
+    background-position: center;
+    background-size:cover;
+    position: relative;
 }
 
 /* SETTINGS */
