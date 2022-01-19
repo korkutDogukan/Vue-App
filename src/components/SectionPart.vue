@@ -16,10 +16,10 @@
         <h3>FastTyping</h3>
       </div>
       <div class="sectionCard card-3">
-        <h3>List App</h3>
+        <h3></h3>
       </div>
       <div class="sectionCard card-4">
-        <h3>List App</h3>
+        <h3></h3>
       </div>
     </div>
   </div>

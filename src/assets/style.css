@@ -388,7 +388,172 @@ form .input-box {
     background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.5)),url(./img/fastTypingBackground.jpg);
     background-position: center;
     background-size:cover;
+}
+
+.fastTypingContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    height: 70%;
+}
+
+.fastTypingCard{
+    color: #fff;
+    width: 60%;
+    border: 2px solid #fff;
+    border-radius: 20px;
+    padding: 1.5% 2%;
+    box-shadow: 0 0 40px 20px rgba(167, 152, 152, 0.26);
+    background: linear-gradient(rgba(27, 132, 180, 0.4),rgba(27, 132, 180, 0.4)),transparent;
+}
+
+.fastTypingCard h3 {
+    font-size: 65px;
+    margin: 4% 0;
+    font-weight: 500;
+}
+
+.fastTypingCard p {
+    font-size: 22px;
+    margin: 2% 0;
+}
+
+.fastTypingCard hr {
+    margin: 2% 0;
+}
+
+.fastTypingWords {
+    background: linear-gradient(rgba(202, 208, 211, 0.4),rgba(202, 208, 211, 0.4)),transparent;
+    padding: 2%;
+    border-radius: 15px;
+}
+
+.fastTypingWords span{
+    display: inline-block;
+    font-size: 30px;
+    margin-right: 20px;
+    color: black;
+    line-height: 50px;
+    font-weight: 700;
+}
+
+.fastTypingContent .inputGroup{
+    margin: 1% 0;
+    padding: 2% 1%;
+    display: flex;
+    align-items: center;
     position: relative;
+    background: linear-gradient(rgba(19, 21, 22, 0.8),rgba(19, 21, 22, 0.8)),transparent;
+    border: 2px solid #fff;
+    border-radius: 15px;
+}
+
+.fastTypingContent .inputGroup input{
+    flex-basis: 80%;
+    padding: 1% 1.5%;
+    font-size: 22px;
+    font-weight: 700;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+}
+
+.fastTypingContent .inputGroup span{
+    display: inline-block;
+    padding: 1% 1.5%;
+    font-size: 20px;
+    flex-basis: 12%;
+    text-align: center;
+}
+
+.fastTypingContent .inputGroup button{
+    padding: 1.3% 1.3%;
+    border: 1px solid #fff;
+    color: rgb(202, 194, 194);
+    border-radius: 50%;
+    font-size: 20px;
+    outline: none;
+    cursor: pointer;
+    flex-basis: 4%;
+    background: linear-gradient(rgba(88, 103, 110, 0.8),rgba(19, 21, 22, 0.8)),transparent;
+}
+
+.fastTypingContent .inputGroup button:disabled i{
+    color: rgb(139, 35, 22)
+}
+
+.fastTypingContent .inputGroup button i{
+    transition: 0.8s;
+}
+
+.fastTypingContent .inputGroup button:hover i{
+    transform: rotateX(180deg);
+}
+
+.writingWordBG{
+    color: #fff !important;
+    background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),transparent;
+    padding: 2px 4px;
+    border-radius: 10px;
+}
+
+.falseWord{
+    color: rgb(180, 26, 26) !important;
+    background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),transparent;
+    padding: 2px 4px;
+    border-radius: 10px;
+}
+
+.resultCard{
+    color: #fff;
+    width: 25%;
+    border: 2px solid #fff;
+    border-radius: 20px;
+    padding: 1.5% 2%;
+    box-shadow: 0 0 40px 20px rgba(167, 152, 152, 0.26);
+    background: linear-gradient(rgba(27, 132, 180, 0.4),rgba(27, 132, 180, 0.4)),transparent;
+}
+
+.resultCard h1 {
+    font-size: 55px;
+    text-align: center;
+    margin: 25px 0;
+}
+
+.resultCard h3 {
+    font-size: 45px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.resultCard .wpn {
+    text-align: center;
+    font-size: 19px;
+    margin-bottom: 50px;
+}
+
+.resultCard p {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.resultCard button {
+    background: transparent;
+    border: 2px solid #fff;
+    border-radius: 20px;
+    padding: 2% 6%;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    float: right;
+}
+
+.resultCard button i{
+    transition: 0.7s;
+}
+
+.resultCard button:hover i{
+    transform:translateX(10px);
 }
 
 /* SETTINGS */
