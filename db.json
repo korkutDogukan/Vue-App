@@ -9,6 +9,11 @@
       "userName": "gülistan",
       "password": "123",
       "id": 2
+    },
+    {
+      "userName": "deneme",
+      "password": "123",
+      "id": 3
     }
   ],
   "itemList": [
@@ -35,7 +40,89 @@
       "itemId": 1642506388899,
       "userId": 2,
       "id": 4
+    },
+    {
+      "text": "de",
+      "itemId": 1643108331480,
+      "userId": 3,
+      "id": 5
+    },
+    {
+      "text": "de1",
+      "itemId": 1643108332135,
+      "userId": 3,
+      "id": 6
+    },
+    {
+      "text": "de2",
+      "itemId": 1643108332687,
+      "userId": 3,
+      "id": 7
+    },
+    {
+      "text": "de4",
+      "itemId": 1643108995775,
+      "userId": 3,
+      "id": 8
     }
   ],
-  "favList": []
+  "favList": [],
+  "pastScore": [
+    {
+      "userId": 3,
+      "wpn": 27,
+      "accuracy": "96.30",
+      "correctWord": 26,
+      "wrongWord": 1,
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "wpn": 1,
+      "accuracy": "100.00",
+      "correctWord": 1,
+      "wrongWord": 0,
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "wpn": 1,
+      "accuracy": "100.00",
+      "correctWord": 1,
+      "wrongWord": 0,
+      "id": 3
+    },
+    {
+      "userId": 1,
+      "wpn": 2,
+      "accuracy": "50.00",
+      "correctWord": 1,
+      "wrongWord": 1,
+      "id": 4
+    },
+    {
+      "userId": 1,
+      "wpn": 2,
+      "accuracy": "100.00",
+      "correctWord": 2,
+      "wrongWord": 0,
+      "id": 5
+    },
+    {
+      "userId": 1,
+      "wpn": 3,
+      "accuracy": "66.67",
+      "correctWord": 2,
+      "wrongWord": 1,
+      "id": 6
+    },
+    {
+      "userId": 1,
+      "wpn": 4,
+      "accuracy": "25.00",
+      "correctWord": 1,
+      "wrongWord": 3,
+      "id": 7
+    }
+  ]
 }

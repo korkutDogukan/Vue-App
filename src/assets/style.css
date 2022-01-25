@@ -363,6 +363,7 @@ form .input-box {
 }
 
 .btnColor {
+    border: none;
     color: white !important;
     background: rgba(252, 227, 8, 0.658) !important;
     position: relative;
@@ -554,6 +555,32 @@ form .input-box {
 
 .resultCard button:hover i{
     transform:translateX(10px);
+}
+
+.pastRecord {
+    margin-bottom: 20px;
+}
+
+.pastRecord h3{
+    margin-bottom: 20px;
+    font-size: 35px;
+    border-bottom: 2px solid #fff;
+}
+
+.pastRecord span{
+    display: inline-block;
+    margin: 5px;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    padding: 15px;
+    background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),transparent;
+    cursor: pointer;
+}
+
+.resultBtns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 /* SETTINGS */

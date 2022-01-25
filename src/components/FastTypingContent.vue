@@ -25,9 +25,12 @@
     </div>
     <div v-else class="resultCard">
       <h1>Time is over <i class="fas fa-hourglass-half"></i></h1>
-      <h3>{{ wpnCount }} WPN</h3>
+      <h3>{{ wpnCount }} WPM</h3>
       <p class="wpn">(words per minute)</p>
-      <p>Accuracy : <span style="color: rgb(131, 156, 19)">{{accuracyRate}}%</span></p>
+      <p>
+        Accuracy :
+        <span style="color: rgb(131, 156, 19)">{{ accuracyRate }}%</span>
+      </p>
       <p>
         Correct Word :
         <span style="color: rgb(46, 148, 71)">{{ trueCount }}</span>
@@ -36,15 +39,34 @@
         Wrong Word :
         <span style="color: rgb(139, 35, 22)">{{ falseCount }}</span>
       </p>
-      <button @click="playAgain">
-        Play Again <i class="fas fa-play-circle"></i>
-      </button>
+      <div v-if="pastRecords.length > 0" class="pastRecord">
+        <h3>Your Past Scores</h3>
+        <span
+          v-for="score in pastRecords"
+          :key="score.id"
+          @click="showDetails(score)"
+          >{{ score.wpn }} WPM
+        </span>
+      </div>
+      <div class="resultBtns">
+        <button @click="saveRecord">
+          Save Record <i class="fas fa-save"></i>
+        </button>
+        <button @click="playAgain">
+          Play Again <i class="fas fa-play-circle"></i>
+        </button>
+      </div>
     </div>
   </div>
 </template>
 <script setup>
 import { ref, watch, computed } from "vue";
 import wordList from "@/assets/words.json";
+import { useStore } from "vuex";
+import axios from "axios";
+import swal from "sweetalert";
+
+const store = useStore();
 
 const words = ref([]);
 
@@ -56,6 +78,8 @@ const timer = ref(60);
 const interval = ref(false);
 const isRunning = ref(false);
 const isFinish = ref(false);
+
+const pastRecords = ref([]);
 
 watch(writingWord, (val) => {
   if (!val || val === " ") {
@@ -110,6 +134,16 @@ const playAgain = () => {
   timer.value = 60;
   isTrue.value = true;
   isRunning.value = false;
+  trueCount.value = 0;
+  falseCount.value = 0;
+  againBtn.value = 0;
+  axios
+    .get(
+      `http://localhost:3000/pastScore?userId=${store.getters._getCurrentUser.id}`
+    )
+    .then((get_response) => {
+      pastRecords.value = get_response.data;
+    });
 };
 
 const writingWordBG = computed(() => {
@@ -122,6 +156,50 @@ const wpnCount = computed(() => {
 
 const accuracyRate = computed(() => {
   const totalCount = trueCount.value + falseCount.value;
-  return 100 / (totalCount / trueCount.value);
+  const percent = 100 / (totalCount / trueCount.value);
+  return isNaN(percent) ? 0 : percent.toFixed(2);
 });
+
+const againBtn = ref(0);
+
+const saveRecord = () => {
+  if (againBtn.value == 0) {
+    if (wpnCount.value > 0) {
+      axios.post("http://localhost:3000/pastScore", {
+        userId: store.getters._getCurrentUser.id,
+        wpn: wpnCount.value,
+        accuracy: accuracyRate.value,
+        correctWord: trueCount.value,
+        wrongWord: falseCount.value,
+      });
+      againBtn.value++;
+      swal("Recording successful.");
+      axios
+        .get(
+          `http://localhost:3000/pastScore?userId=${store.getters._getCurrentUser.id}`
+        )
+        .then((get_response) => {
+          pastRecords.value = get_response.data;
+        });
+    } else {
+      swal("Your values must be greater than 0.");
+    }
+  } else {
+    swal("This recording already exists!!!");
+  }
+};
+
+const showDetails = (score) => {
+  swal(
+    `WPN : ${score.wpn}\nAccuracy : ${score.accuracy}\nCorrect Word : ${score.correctWord}\nWrong Word : ${score.wrongWord}`
+  );
+};
+
+axios
+  .get(
+    `http://localhost:3000/pastScore?userId=${store.getters._getCurrentUser.id}`
+  )
+  .then((get_response) => {
+    pastRecords.value = get_response.data;
+  });
 </script>

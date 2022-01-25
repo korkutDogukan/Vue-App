@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <li v-for="item in itemList" :key="item.id">
+    <li v-for="(item, index) in itemList" :key="index">
       <span><i class="fas fa-angle-right"></i> {{ item.text }}</span>
       <div class="btnGroups">
         <button class="btnGroups1">
@@ -32,21 +32,21 @@ const itemList = inject("itemList");
 // const textYellowValue = ref(false);
 
 // const favItem = (item) => {
-  // axios.get("http://localhost:3000/favList").then((get_response) => {
-  //   const obj = get_response.data.find((i) => i.text === `${item.text}`);
-  //   if (get_response.data.includes(obj)) {
-  //     textYellowValue.value = false;
-  //     axios.delete(`http://localhost:3000/favList/${item.id}`);
-  //   } else {
-  //     textYellowValue.value = true;
-  //     axios.post(`http://localhost:3000/favList`, {
-  //       text: item.text,
-  //       itemId: item.itemId,
-  //       userId: store.state.user.id,
-  //       id: item.id,
-  //     });
-  //   }
-  // });
+// axios.get("http://localhost:3000/favList").then((get_response) => {
+//   const obj = get_response.data.find((i) => i.text === `${item.text}`);
+//   if (get_response.data.includes(obj)) {
+//     textYellowValue.value = false;
+//     axios.delete(`http://localhost:3000/favList/${item.id}`);
+//   } else {
+//     textYellowValue.value = true;
+//     axios.post(`http://localhost:3000/favList`, {
+//       text: item.text,
+//       itemId: item.itemId,
+//       userId: store.state.user.id,
+//       id: item.id,
+//     });
+//   }
+// });
 // };
 
 // const favTextChange = computed(() => {
