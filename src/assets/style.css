@@ -375,8 +375,8 @@ form .input-box {
     height: 3px;
     background-color:rgba(192, 46, 9);;
     position: absolute;
-    top: 13px;
-    left: 0;
+    top: 15px;
+    left: 2px;
     transform: rotate(-45deg)
 }
 

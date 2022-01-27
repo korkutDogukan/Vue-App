@@ -64,9 +64,22 @@
       "itemId": 1643108995775,
       "userId": 3,
       "id": 8
+    },
+    {
+      "text": "dogukan2",
+      "itemId": 1643284280225,
+      "userId": 1,
+      "id": 9
     }
   ],
-  "favList": [],
+  "favList": [
+    {
+      "text": "dogukan2",
+      "itemId": 1643284280225,
+      "userId": 1,
+      "id": 9
+    }
+  ],
   "pastScore": [
     {
       "userId": 3,

@@ -1,13 +1,13 @@
 <template>
   <ul>
     <li v-for="(item, index) in itemList" :key="index">
-      <span :class="favTextChange"
-        ><i class="fas fa-angle-right"></i> {{ item.text }}</span
-      >
+      <span><i class="fas fa-angle-right"></i> {{ item.text }}</span>
       <div class="btnGroups">
-        <button @click="favItem(item)" :class="favBtnChange" class="btnGroups1">
-          <i class="fas fa-star"></i>
-        </button>
+        <button
+          @click.prevent="favItem(item, $event.currentTarget)"
+          class="btnGroups1"
+          v-html="text"
+        ></button>
         <button @click="infoItem(item)" class="btnGroups2">
           <i class="fas fa-info"></i>
         </button>
@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import { inject } from "vue";
 import axios from "axios";
 import swal from "sweetalert";
@@ -28,20 +28,27 @@ import { useStore } from "vuex";
 
 const store = useStore();
 const itemList = inject("itemList");
+const text = '<i class="fas fa-star"></i>';
+const favItemList = ref([]);
 
-const favStyle = ref(false);
-
-const favTextChange = computed(() => {
-  return { textYellow: favStyle.value };
+axios.get("http://localhost:3000/favList").then((get_response) => {
+  favItemList.value = get_response.data;
 });
 
-const favBtnChange = computed(() => {
-  return { btnColor: favStyle.value };
-});
-
-const favItem = (item) => {
+const favItem = (item, target) => {
+  let list = target.classList;
   console.log(item);
-  favStyle.value = !favStyle.value;
+  if (list.contains("btnColor")) {
+    list.remove("btnColor");
+    list.add("btnGroups1");
+    axios.delete(`http://localhost:3000/favList/${item.id}`);
+  } else {
+    list.remove("btnGroups1");
+    list.add("btnColor");
+    axios.post("http://localhost:3000/favList", item).then((post_response) => {
+      console.log(post_response.data);
+    });
+  }
 };
 
 const infoItem = (item) => {
