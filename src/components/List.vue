@@ -1,9 +1,11 @@
 <template>
   <ul>
     <li v-for="(item, index) in itemList" :key="index">
-      <span><i class="fas fa-angle-right"></i> {{ item.text }}</span>
+      <span :class="favTextChange"
+        ><i class="fas fa-angle-right"></i> {{ item.text }}</span
+      >
       <div class="btnGroups">
-        <button class="btnGroups1">
+        <button @click="favItem(item)" :class="favBtnChange" class="btnGroups1">
           <i class="fas fa-star"></i>
         </button>
         <button @click="infoItem(item)" class="btnGroups2">
@@ -18,7 +20,7 @@
 </template>
 
 <script setup>
-// import { ref } from "vue";
+import { ref, computed } from "vue";
 import { inject } from "vue";
 import axios from "axios";
 import swal from "sweetalert";
@@ -26,36 +28,21 @@ import { useStore } from "vuex";
 
 const store = useStore();
 const itemList = inject("itemList");
-const nrwew = ref('dwed');
-// const itemText = ref("");
 
-// const textYellowValue = ref(false);
+const favStyle = ref(false);
 
-// const favItem = (item) => {
-// axios.get("http://localhost:3000/favList").then((get_response) => {
-//   const obj = get_response.data.find((i) => i.text === `${item.text}`);
-//   if (get_response.data.includes(obj)) {
-//     textYellowValue.value = false;
-//     axios.delete(`http://localhost:3000/favList/${item.id}`);
-//   } else {
-//     textYellowValue.value = true;
-//     axios.post(`http://localhost:3000/favList`, {
-//       text: item.text,
-//       itemId: item.itemId,
-//       userId: store.state.user.id,
-//       id: item.id,
-//     });
-//   }
-// });
-// };
+const favTextChange = computed(() => {
+  return { textYellow: favStyle.value };
+});
 
-// const favTextChange = computed(() => {
-//   return { textYellow: textYellowValue.value };
-// });
+const favBtnChange = computed(() => {
+  return { btnColor: favStyle.value };
+});
 
-// const favBtnChange = computed(() => {
-//   return { btnColor: textYellowValue.value };
-// });
+const favItem = (item) => {
+  console.log(item);
+  favStyle.value = !favStyle.value;
+};
 
 const infoItem = (item) => {
   swal(
