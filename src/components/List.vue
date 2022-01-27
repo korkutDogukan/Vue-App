@@ -26,7 +26,7 @@ import { useStore } from "vuex";
 
 const store = useStore();
 const itemList = inject("itemList");
-
+const nrwew = ref('dwed');
 // const itemText = ref("");
 
 // const textYellowValue = ref(false);
