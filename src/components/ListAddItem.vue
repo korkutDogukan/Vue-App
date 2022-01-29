@@ -31,14 +31,16 @@ const addItem = () => {
     if (itemList.value.includes(obj)) {
       swal("The element you want to add already exists.");
     } else {
-      axios.post("http://localhost:3000/itemList", {
+      itemList.value.push({
+        id: new Date().getTime(),
         text: addText.value,
-        itemId: new Date().getTime(),
+        itemId: new Date().getTime()+1,
         userId: store.state.user.id,
       });
-      itemList.value.push({
+      axios.post("http://localhost:3000/itemList", {
+        id: new Date().getTime(),
         text: addText.value,
-        itemId: new Date().getTime(),
+        itemId: new Date().getTime()+1,
         userId: store.state.user.id,
       });
       addText.value = "";

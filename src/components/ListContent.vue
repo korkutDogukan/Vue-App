@@ -3,7 +3,9 @@
     <div class="todoListContainer">
       <ListAddItem></ListAddItem>
       <List></List>
-      <ListItemCount></ListItemCount>
+      <div class="itemCount">
+        <ListItemCount></ListItemCount>
+      </div>
     </div>
   </div>
 </template>

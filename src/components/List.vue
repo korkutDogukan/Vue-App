@@ -5,7 +5,7 @@
       <div class="btnGroups">
         <button
           @click.prevent="favItem(item, $event.currentTarget)"
-          :class="favItemIdList.includes(item.itemId) ? btnColor : null"
+          :class="favItemIdList.includes(item.itemId) ? btnColor : btnGroups1"
           class="btnGroups1"
           v-html="text"
         ></button>
@@ -32,11 +32,15 @@ const itemList = inject("itemList");
 const text = '<i class="fas fa-star"></i>';
 const favItemIdList = ref([]);
 
-axios.get("http://localhost:3000/favList").then((get_response) => {
-  for (let i = 0; i < get_response.data.length; i++) {
-    favItemIdList.value.push(get_response.data[i].itemId);
-  }
-});
+axios
+  .get(
+    `http://localhost:3000/favList?userId=${store.getters._getCurrentUser.id}`
+  )
+  .then((get_response) => {
+    for (let i = 0; i < get_response.data.length; i++) {
+      favItemIdList.value.push(get_response.data[i].itemId);
+    }
+  });
 
 const favItem = (item, target) => {
   let list = target.classList;
@@ -55,6 +59,10 @@ const btnColor = computed(() => {
   return "btnColor";
 });
 
+const btnGroups1 = computed(() => {
+  return "btnGroups1";
+});
+
 const infoItem = (item) => {
   swal(
     `Item Text : ${item.text} \nItem ID : ${item.itemId} \nThe user who added the item : ${store.state.user.userName} \n`
@@ -62,7 +70,15 @@ const infoItem = (item) => {
 };
 
 const deleteItem = (item) => {
-  axios.delete(`http://localhost:3000/itemList/${item.id}`);
-  itemList.value = itemList.value.filter((i) => i != item);
+  axios
+    .get(`http://localhost:3000/favList?itemId=${item.itemId}`)
+    .then((get_response) => {
+      if (get_response.data.length > 0) {
+        swal("You can not delete your favorite item!!!");
+      } else {
+        axios.delete(`http://localhost:3000/itemList/${item.id}`);
+        itemList.value = itemList.value.filter((i) => i != item);
+      }
+    });
 };
 </script>
