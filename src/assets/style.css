@@ -212,11 +212,15 @@ form .input-box {
 }
 
 .card-1 {
-    background-image: url("./img/todoList.jpg");
+    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.1)),url("./img/todoList.jpg");
 }
 
 .card-2 {
-    background-image: url("./img/keyboard.jpg");
+    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.1)),url("./img/keyboard.jpg");
+}
+
+.card-3 {
+    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.3)),url("./img/exchange.jpg");
 }
 
 .container .sectionCard:hover {
@@ -576,6 +580,17 @@ form .input-box {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+/* Exchange */
+
+.exchangeContainer {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.5)),url(./img/exchangeBackground.jpg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
 }
 
 /* SETTINGS */

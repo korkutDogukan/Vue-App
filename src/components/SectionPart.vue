@@ -15,11 +15,11 @@
       <div @click="goFastTyping" class="sectionCard card-2">
         <h3>FastTyping</h3>
       </div>
-      <div class="sectionCard card-3">
-        <h3></h3>
+      <div @click="goExchange" class="sectionCard card-3">
+        <h3>Exchange</h3>
       </div>
       <div class="sectionCard card-4">
-        <h3></h3>
+        <h3>App</h3>
       </div>
     </div>
   </div>
@@ -38,6 +38,12 @@ const goFastTyping = () => {
 const goList = () => {
   setTimeout(() => {
     router.push({ name: "ListPage" });
+  }, 150);
+};
+
+const goExchange = () => {
+  setTimeout(() => {
+    router.push({ name: "ExchangePage" });
   }, 150);
 };
 </script>

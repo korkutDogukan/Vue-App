@@ -31,6 +31,11 @@ const routes = [
     name: "FastTypingPage",
     path: "/fasttyping",
     component: () => import("@/views/FastTyping")
+  },
+  {
+    name: "ExchangePage",
+    path: "/exchange",
+    component: () => import("@/views/Exchange")
   }
 ];
 
@@ -40,7 +45,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, _, next) => {
-  const authRequiredRoutes = ["HomePage", "ListPage", "SettingsPage", "FastTypingPage"];
+  const authRequiredRoutes = ["HomePage", "ListPage", "SettingsPage", "FastTypingPage","ExchangePage"];
   const authNotRequiredRoutes = ["LoginPage", "RegisterPage"];
   const _isAuthenticated = store.getters._isAuthenticated;
 

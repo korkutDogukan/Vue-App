@@ -16,45 +16,24 @@
       "id": 3
     }
   ],
-  "itemList": [
+  "itemList": [],
+  "favList": [],
+  "pastScore": [
     {
-      "id": 1643455987578,
-      "text": "3",
-      "itemId": 1643455987579,
-      "userId": 1
+      "userId": 1,
+      "wpn": 1,
+      "accuracy": "100.00",
+      "correctWord": 1,
+      "wrongWord": 0,
+      "id": 1
     },
     {
-      "id": 1643456064203,
-      "text": "1",
-      "itemId": 1643456064204,
-      "userId": 1
-    },
-    {
-      "id": 1643456064587,
-      "text": "2",
-      "itemId": 1643456064588,
-      "userId": 1
-    },
-    {
-      "id": 1643456067380,
-      "text": "34",
-      "itemId": 1643456067381,
-      "userId": 1
+      "userId": 1,
+      "wpn": 28,
+      "accuracy": "96.43",
+      "correctWord": 27,
+      "wrongWord": 1,
+      "id": 2
     }
-  ],
-  "favList": [
-    {
-      "id": 1643456067380,
-      "text": "34",
-      "itemId": 1643456067381,
-      "userId": 1
-    },
-    {
-      "id": 1643456064587,
-      "text": "2",
-      "itemId": 1643456064588,
-      "userId": 1
-    }
-  ],
-  "pastScore": []
+  ]
 }
