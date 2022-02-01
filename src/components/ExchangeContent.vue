@@ -1,51 +1,53 @@
 <template>
-  <div class="container mt-5">
-    <div class="row">
-      <div class="col-md-2">
-        <div class="input-group mb-3">
-          <input type="number" class="form-control" v-model="money1" />
+  <div class="exchangeContentContainer">
+    <div class="exchangeBackground">
+      <div class="row">
+        <div class="exchangeCol">
+          <input class="input-box" type="number" v-model="money1" />
+          <input type="text" class="input-box" v-model="money2" disabled />
         </div>
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" v-model="money2" disabled />
+        <div class="exchangeCol2">
+          <select v-model="selectedElement">
+            <option selected disabled>
+              {{ selectedElement }}
+            </option>
+            <option v-for="value in countryCurrencies" :key="value">
+              {{ value }}
+            </option>
+          </select>
+          <select v-model="selectedElement2">
+            <option selected disabled>
+              {{ selectedElement2 }}
+            </option>
+            <option v-for="value in countryCurrencies" :key="value">
+              {{ value }}
+            </option>
+          </select>
+        </div>
+        <div class="exchangeBtn">
+          <button
+            @click="reverseBtn"
+            class="reverseBtn"
+            type="button"
+            id="exchange"
+          >
+            <i class="fas fa-sync-alt"></i>
+          </button>
+          <button
+            @click="exchangeMoney"
+            class="calculateBtn"
+            type="button"
+            id="exchange"
+          >
+            <i class="fas fa-calculator"></i>
+          </button>
         </div>
       </div>
-
-      <div class="col-md-1">
-        <select
-          class="form-select mb-3"
-          aria-label="Default select example"
-          v-model="selectedElement"
-        >
-          <option selected>
-            {{ selectedElement }}
-          </option>
-          <option v-for="value in countryCurrencies" :key="value">
-            {{ value }}
-          </option>
-        </select>
-        <select
-          class="form-select"
-          aria-label="Default select example"
-          v-model="selectedElement2"
-        >
-          <option selected>
-            {{ selectedElement2 }}
-          </option>
-          <option v-for="value in countryCurrencies" :key="value">
-            {{ value }}
-          </option>
-        </select>
-      </div>
-
-      <div class="col-md-2">
-        <button
-          @click="exchangeMoney"
-          type="button"
-          id="exchange"
-          class="btn btn-success"
-        >
-          Çevir
-        </button>
+      <div class="row">
+        <div class="exchangeExplain">
+          <p class="firstExplain">Equals {{ money1 }} {{ explainCountry }}</p>
+          <p class="secondExplain">{{ money2 }} {{ explainCountry2 }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -65,6 +67,8 @@ const money2 = ref(null);
 const selectType = ref([]);
 const selectedElement = ref(null);
 const selectedElement2 = ref(null);
+const explainCountry = ref("Euro");
+const explainCountry2 = ref("Turkish Lira");
 
 const countryCurrencies = ref([]);
 
@@ -92,7 +96,22 @@ const exchangeMoney = () => {
       `https://api.fastforex.io/convert?from=${selectedElement.value}&to=${selectedElement2.value}&amount=${money1.value}.00&api_key=9044400405-a8576f37a2-r6itbx`
     )
     .then((get_response) => {
-      money2.value = (get_response.data.result.rate * money1.value).toFixed(2);
+      money2.value =
+        get_response.data.result[selectedElement2.value].toFixed(2);
     });
+
+  axios.get(countriesApi.value).then((get_response) => {
+    explainCountry.value = get_response.data.currencies[selectedElement.value];
+    explainCountry2.value =
+      get_response.data.currencies[selectedElement2.value];
+  });
+};
+
+const reverseBtn = () => {
+  const newText = selectedElement.value;
+  const newText2 = selectedElement2.value;
+
+  selectedElement.value = newText2;
+  selectedElement2.value = newText;
 };
 </script>

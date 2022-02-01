@@ -593,6 +593,119 @@ form .input-box {
     position: relative;
 }
 
+.exchangeContentContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+}
+
+.exchangeBackground {
+    background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.5)),transparent;
+    padding: 2%;
+    border: 2px solid #fff;
+    border-radius: 20px;
+}
+
+.exchangeBackground .row{
+    display: flex;
+    align-items: center;
+}
+
+.exchangeCol {
+    flex-basis: 40%;
+}
+
+.exchangeCol2 {
+    flex-basis: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.exchangeBtn {
+    flex-basis: 10%;
+    display: flex;
+}
+
+.exchangeCol .input-box{
+    width: 100%;
+    background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),transparent;
+    color: #fff;
+    margin: 6px 0;
+    padding: 15px 10px;
+    border: 2px solid #fff;
+    border-radius: 20px;
+    outline: none;
+    text-align: center;
+    font-size: 16px;
+}::placeholder {
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+}
+
+.exchangeCol2 select {
+    width: 40%;
+    background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),transparent;
+    color: #fff;
+    margin: 6px 0;
+    padding: 15px 10px;
+    border: 2px solid #fff;
+    border-radius: 20px;
+    outline: none;
+    text-align: center;
+    font-size: 16px;
+}
+
+.exchangeCol2 select option{
+    color: #fff;
+    font-size: 18px;
+    text-align: start;
+    background: #333;
+}
+
+.exchangeBtn button{
+    margin: 0 5%;
+    width: 60px;
+    height: 50px;
+    color: #fff;
+    font-size: 18px;
+    background: transparent;
+    border: 3px solid #fff;
+    border-radius: 15px;
+    background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.2)),transparent;
+    cursor: pointer;
+}
+
+.exchangeBtn button i{
+    transition: transform 1.5s;
+}
+
+.exchangeBtn button:hover i{
+    transform: rotateZ(180deg);
+}
+
+.row .exchangeExplain {
+    margin-top: 5%;
+}
+
+.row .exchangeExplain p{
+    color: #fff;
+}
+
+.row .exchangeExplain .firstExplain{
+    font-size: 19px;
+    margin-bottom: 25px;
+}
+
+.row .exchangeExplain .secondExplain{
+    font-size: 35px;
+    font-weight: 800;
+}
+
+
 /* SETTINGS */
 
 .settingsContainer {
