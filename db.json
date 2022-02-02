@@ -16,8 +16,28 @@
       "id": 3
     }
   ],
-  "itemList": [],
-  "favList": [],
+  "itemList": [
+    {
+      "id": 1643791321600,
+      "text": "deneme",
+      "itemId": 1643791321601,
+      "userId": 1
+    },
+    {
+      "id": 1643791326535,
+      "text": "deneme2",
+      "itemId": 1643791326536,
+      "userId": 1
+    }
+  ],
+  "favList": [
+    {
+      "id": 1643791326535,
+      "text": "deneme2",
+      "itemId": 1643791326536,
+      "userId": 1
+    }
+  ],
   "pastScore": [
     {
       "userId": 1,
@@ -34,6 +54,14 @@
       "correctWord": 27,
       "wrongWord": 1,
       "id": 2
+    },
+    {
+      "userId": 1,
+      "wpn": 27,
+      "accuracy": "88.89",
+      "correctWord": 24,
+      "wrongWord": 3,
+      "id": 3
     }
   ]
 }

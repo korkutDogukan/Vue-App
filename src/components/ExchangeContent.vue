@@ -55,6 +55,7 @@
 <script setup>
 import axios from "axios";
 import { ref } from "vue";
+import swal from "sweetalert";
 // const api = ref(
 //   "http://api.exchangeratesapi.io/v1/latest?access_key=4c0588da19140062426b946e62fb3482&format=1"
 // );
@@ -91,20 +92,29 @@ axios
   });
 
 const exchangeMoney = () => {
-  axios
-    .get(
-      `https://api.fastforex.io/convert?from=${selectedElement.value}&to=${selectedElement2.value}&amount=${money1.value}.00&api_key=9044400405-a8576f37a2-r6itbx`
-    )
-    .then((get_response) => {
-      money2.value =
-        get_response.data.result[selectedElement2.value].toFixed(2);
-    });
+  if (money1.value != "" && money1.value>0) {
+    axios
+      .get(
+        `https://api.fastforex.io/convert?from=${selectedElement.value}&to=${
+          selectedElement2.value
+        }&amount=${Math.round(
+          money1.value
+        )}.00&api_key=9044400405-a8576f37a2-r6itbx`
+      )
+      .then((get_response) => {
+        money2.value =
+          get_response.data.result[selectedElement2.value].toFixed(2);
+      });
 
-  axios.get(countriesApi.value).then((get_response) => {
-    explainCountry.value = get_response.data.currencies[selectedElement.value];
-    explainCountry2.value =
-      get_response.data.currencies[selectedElement2.value];
-  });
+    axios.get(countriesApi.value).then((get_response) => {
+      explainCountry.value =
+        get_response.data.currencies[selectedElement.value];
+      explainCountry2.value =
+        get_response.data.currencies[selectedElement2.value];
+    });
+  } else {
+    swal("Please enter a valid number.");
+  }
 };
 
 const reverseBtn = () => {
