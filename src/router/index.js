@@ -36,6 +36,11 @@ const routes = [
     name: "ExchangePage",
     path: "/exchange",
     component: () => import("@/views/Exchange")
+  },
+  {
+    name: "WeatherPage",
+    path: "/weather",
+    component: () => import("@/views/Weather")
   }
 ];
 
@@ -45,7 +50,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, _, next) => {
-  const authRequiredRoutes = ["HomePage", "ListPage", "SettingsPage", "FastTypingPage","ExchangePage"];
+  const authRequiredRoutes = ["HomePage", "ListPage", "SettingsPage", "FastTypingPage","ExchangePage","WeatherPage"];
   const authNotRequiredRoutes = ["LoginPage", "RegisterPage"];
   const _isAuthenticated = store.getters._isAuthenticated;
 

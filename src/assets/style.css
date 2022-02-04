@@ -223,6 +223,10 @@ form .input-box {
     background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.3)),url("./img/exchange.jpg");
 }
 
+.card-4 {
+    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.3)),url("./img/weather.jpg");
+}
+
 .container .sectionCard:hover {
    transform: translateY(-20px);
 }
@@ -705,7 +709,147 @@ form .input-box {
     font-weight: 800;
 }
 
+/* Weather */
 
+.weatherContainer {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.9),rgba(0,0,0,0.8)),url(./img/weatherBackground.jpg);
+    background-position: center;
+    background-size: cover;
+} 
+
+.weatherContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.weatherContent main {
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.3)),url(./img/warm.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 600px;
+    width: 400px;
+    padding: 2%;
+    border-radius: 20px;
+    box-shadow: 0 0 40px 40px rgba(175, 171, 171, 0.3);
+}
+
+.weatherContent main.extremehot {
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.3)),url(./img/extremehot.jpg);
+}
+
+.weatherContent main.hot {
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.3)),url(./img/hot.jpg);
+}
+
+.weatherContent main.warm {
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.3)),url(./img/warm.jpg);
+}
+
+.weatherContent main.normal {
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.3)),url(./img/normal.jpg);
+}
+
+.weatherContent main.cold {
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.3)),url(./img/cold.jpg);
+}
+
+.weatherContent main.verycold {
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.3)),url(./img/verycold.jpg);
+}
+
+.weatherContent main.extremecold {
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.3)),url(./img/extremecold.jpg);
+}
+
+main .search-box {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+main .search-box .search-bar{
+    display: block;
+    width: 100%;
+    padding: 13px;
+
+    color: #313131;
+    font-size: 16px;
+
+    appearance: none;
+    border: none;
+    outline: none;
+    background: none;
+
+    box-shadow: 0px 0px 16px rgba(0,0,0,0.25);
+    background-color: rgba(255, 255, 255, 0.911);
+    border-radius: 0px 16px 0px 16px;
+    transition: 0.4s;
+    text-align: center;
+}::placeholder{
+    color: #313131;
+}
+
+.search-box .search-bar:focus {
+    box-shadow: 0px 0px 16px rgba(0,0,0,0.25);
+    background-color: rgba(255,255,255,0.811);
+    border-radius: 16px 0px 16px 0px;
+}
+
+.location-box .location {
+    color: #fff;
+    font-size: 32px;
+    font-weight: 500;
+    text-align: center;
+    text-shadow: 1px 3px rgba(0,0,0,0.25);
+}
+
+.location-box .date {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 100;
+    font-style: italic;
+    text-align: center;
+}
+
+.location-box .hours {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 100;
+    font-style: italic;
+    text-align: center;
+}
+
+.weather-box {
+    text-align: center;
+}
+
+.weather-box .temp {
+    display: inline-block;
+    color: #fff;
+    font-size: 100px;
+    font-weight: 900;
+    padding-top: 20px;
+    padding-bottom: 8px;
+    padding-left: 25px;
+    padding-right: 25px;
+    text-shadow: 3px 6px rgba(0,0,0,0.25);
+    background-color: rgba(255,255,255,0.25);
+    border-radius: 16px;
+    margin: 30px 0px;
+
+    box-shadow: 3px 6px rgba(0,0,0,0.25);
+}
+
+.weather-box .weather {
+    color: #fff;
+    font-size: 48px;
+    font-weight: 700;
+    font-style: italic;
+    text-shadow: 3px 6px rgba(0,0,0,0.25);
+}
 /* SETTINGS */
 
 .settingsContainer {

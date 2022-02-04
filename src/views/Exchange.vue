@@ -1,5 +1,5 @@
 <template>
-    <div class="exchangeContainer">
+  <div class="exchangeContainer">
     <ExchangeNavbar></ExchangeNavbar>
     <ExchangeContent></ExchangeContent>
   </div>

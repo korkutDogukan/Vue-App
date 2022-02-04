@@ -18,8 +18,8 @@
       <div @click="goExchange" class="sectionCard card-3">
         <h3>Exchange</h3>
       </div>
-      <div class="sectionCard card-4">
-        <h3>App</h3>
+      <div @click="goWeather" class="sectionCard card-4">
+        <h3>Weather</h3>
       </div>
     </div>
   </div>
@@ -44,6 +44,12 @@ const goList = () => {
 const goExchange = () => {
   setTimeout(() => {
     router.push({ name: "ExchangePage" });
+  }, 150);
+};
+
+const goWeather = () => {
+  setTimeout(() => {
+    router.push({ name: "WeatherPage" });
   }, 150);
 };
 </script>
