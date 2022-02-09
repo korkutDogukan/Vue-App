@@ -2,7 +2,7 @@
   "users": [
     {
       "userName": "dogukan",
-      "password": "123",
+      "password": "1234",
       "id": 1
     },
     {
@@ -18,19 +18,25 @@
   ],
   "itemList": [
     {
-      "id": 1643791321600,
-      "text": "deneme",
-      "itemId": 1643791321601,
-      "userId": 1
-    },
-    {
       "id": 1643791326535,
       "text": "deneme2",
       "itemId": 1643791326536,
       "userId": 1
+    },
+    {
+      "id": 1644314272186,
+      "text": "denem3",
+      "itemId": 1644314272187,
+      "userId": 1
     }
   ],
   "favList": [
+    {
+      "id": 1644314272186,
+      "text": "denem3",
+      "itemId": 1644314272187,
+      "userId": 1
+    },
     {
       "id": 1643791326535,
       "text": "deneme2",
@@ -62,6 +68,14 @@
       "correctWord": 24,
       "wrongWord": 3,
       "id": 3
+    },
+    {
+      "userId": 1,
+      "wpn": 7,
+      "accuracy": "85.71",
+      "correctWord": 6,
+      "wrongWord": 1,
+      "id": 4
     }
   ]
 }

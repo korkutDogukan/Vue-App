@@ -788,7 +788,9 @@ main .search-box .search-bar{
     border-radius: 0px 16px 0px 16px;
     transition: 0.4s;
     text-align: center;
-}::placeholder{
+}
+
+main .search-box .search-bar::placeholder{
     color: #313131;
 }
 

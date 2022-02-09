@@ -11,7 +11,7 @@
             <option selected disabled>
               {{ selectedElement }}
             </option>
-            <option v-for="value in countryCurrencies" :key="value">
+            <option v-for="value in selectType" :key="value">
               {{ value }}
             </option>
           </select>
@@ -19,7 +19,7 @@
             <option selected disabled>
               {{ selectedElement2 }}
             </option>
-            <option v-for="value in countryCurrencies" :key="value">
+            <option v-for="value in selectType" :key="value">
               {{ value }}
             </option>
           </select>
@@ -60,7 +60,7 @@ import swal from "sweetalert";
 //   "http://api.exchangeratesapi.io/v1/latest?access_key=4c0588da19140062426b946e62fb3482&format=1"
 // );
 const countriesApi = ref(
-  "https://api.fastforex.io/currencies?api_key=9044400405-a8576f37a2-r6itbx"
+  "https://v6.exchangerate-api.com/v6/0c990a61c16c217e90d153c0/codes"
 );
 
 const money1 = ref(1);
@@ -71,50 +71,61 @@ const selectedElement2 = ref(null);
 const explainCountry = ref("Euro");
 const explainCountry2 = ref("Turkish Lira");
 
-const countryCurrencies = ref([]);
+// const countryCurrencies = ref([]);
 
 axios.get(countriesApi.value).then((get_response) => {
-  selectType.value = get_response.data.currencies;
-  const entry = selectType.value;
-  for (const i in entry) {
-    countryCurrencies.value.push(i);
-  }
-  selectedElement.value = countryCurrencies.value[42];
-  selectedElement2.value = countryCurrencies.value[130];
+  get_response.data.supported_codes.forEach((element) => {
+    selectType.value.push(element[0]);
+  });
+
+  // const entry = selectType.value;
+  // for (const i in entry) {
+  //   countryCurrencies.value.push(i);
+  // }
+
+  selectedElement.value = selectType.value[42];
+  selectedElement2.value = selectType.value[138];
 });
 
 axios
-  .get(
-    `https://api.fastforex.io/convert?from=EUR&to=TRY&amount=1.00&api_key=9044400405-a8576f37a2-r6itbx`
-  )
+  .get(`https://v6.exchangerate-api.com/v6/0c990a61c16c217e90d153c0/latest/EUR`)
   .then((get_response) => {
-    money2.value = get_response.data.result.TRY;
+    money2.value = get_response.data.conversion_rates.TRY.toFixed(2);
   });
 
 const exchangeMoney = () => {
-  if (money1.value != "" && money1.value>0) {
+  if (money1.value != "" && money1.value > 0) {
     axios
       .get(
-        `https://api.fastforex.io/convert?from=${selectedElement.value}&to=${
-          selectedElement2.value
-        }&amount=${Math.round(
-          money1.value
-        )}.00&api_key=9044400405-a8576f37a2-r6itbx`
+        `https://v6.exchangerate-api.com/v6/0c990a61c16c217e90d153c0/pair/${selectedElement.value}/${selectedElement2.value}/${money1.value}`
       )
       .then((get_response) => {
-        money2.value =
-          get_response.data.result[selectedElement2.value].toFixed(2);
+        money2.value = get_response.data.conversion_result.toFixed(2);
       });
 
     axios.get(countriesApi.value).then((get_response) => {
-      explainCountry.value =
-        get_response.data.currencies[selectedElement.value];
-      explainCountry2.value =
-        get_response.data.currencies[selectedElement2.value];
+      for (var i = 0; i < get_response.data.supported_codes.length; i++) {
+        if (get_response.data.supported_codes[i][0] == selectedElement.value) {
+          explainCountry.value = get_response.data.supported_codes[i][1];
+        }
+        if (get_response.data.supported_codes[i][0] == selectedElement2.value) {
+          explainCountry2.value = get_response.data.supported_codes[i][1];
+        }
+      }
     });
   } else {
     swal("Please enter a valid number.");
   }
+
+  //   axios.get(countriesApi.value).then((get_response) => {
+  //     explainCountry.value =
+  //       get_response.data.currencies[selectedElement.value];
+  //     explainCountry2.value =
+  //       get_response.data.currencies[selectedElement2.value];
+  //   });
+  // } else {
+  //   swal("Please enter a valid number.");
+  // }
 };
 
 const reverseBtn = () => {
