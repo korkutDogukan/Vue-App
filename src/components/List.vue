@@ -1,26 +1,52 @@
 <template>
-  <ul>
-    <li v-for="(item, index) in itemList" :key="index">
-      <span><i class="fas fa-angle-right"></i> {{ item.text }}</span>
-      <div class="btnGroups">
-        <button
-          @click.prevent="favItem(item, $event.currentTarget)"
-          :class="favItemIdList.includes(item.itemId) ? btnColor : btnGroups1"
-          class="btnGroups1"
-          v-html="text"
-        ></button>
-        <button @click="infoItem(item)" class="btnGroups2">
-          <i class="fas fa-info"></i>
-        </button>
-        <button @click="deleteItem(item)" class="btnGroups3">
-          <i class="fas fa-trash"></i>
-        </button>
-      </div>
-    </li>
-  </ul>
+  <div>
+    <SearhListInput
+      :itemList="itemList"
+      @searchedList="searchItem"
+    ></SearhListInput>
+    <ul v-if="searchedList.length == 0 && searchedText.length == 0">
+      <li v-for="(item, index) in itemList" :key="index">
+        <span><i class="fas fa-angle-right"></i> {{ item.text }}</span>
+        <div class="btnGroups">
+          <button
+            @click.prevent="favItem(item, $event.currentTarget)"
+            :class="favItemIdList.includes(item.itemId) ? btnColor : btnGroups1"
+            class="btnGroups1"
+            v-html="text"
+          ></button>
+          <button @click="infoItem(item)" class="btnGroups2">
+            <i class="fas fa-info"></i>
+          </button>
+          <button @click="deleteItem(item)" class="btnGroups3">
+            <i class="fas fa-trash"></i>
+          </button>
+        </div>
+      </li>
+    </ul>
+    <ul v-else>
+      <li v-for="(item, index) in searchedList" :key="index">
+        <span><i class="fas fa-angle-right"></i> {{ item.text }}</span>
+        <div class="btnGroups">
+          <button
+            @click.prevent="favItem(item, $event.currentTarget)"
+            :class="favItemIdList.includes(item.itemId) ? btnColor : btnGroups1"
+            class="btnGroups1"
+            v-html="text"
+          ></button>
+          <button @click="infoItem(item)" class="btnGroups2">
+            <i class="fas fa-info"></i>
+          </button>
+          <button @click="deleteItem(item)" class="btnGroups3">
+            <i class="fas fa-trash"></i>
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script setup>
+import SearhListInput from "./SearchListInput.vue";
 import { ref, computed } from "vue";
 import { inject } from "vue";
 import axios from "axios";
@@ -31,7 +57,6 @@ const store = useStore();
 const itemList = inject("itemList");
 const text = '<i class="fas fa-star"></i>';
 const favItemIdList = ref([]);
-
 axios
   .get(
     `http://localhost:3000/favList?userId=${store.getters._getCurrentUser.id}`
@@ -80,5 +105,14 @@ const deleteItem = (item) => {
         itemList.value = itemList.value.filter((i) => i != item);
       }
     });
+};
+
+const searchedList = ref([]);
+const searchedText = ref("");
+const searchItem = (searchText) => {
+  searchedText.value = searchText;
+  searchedList.value = itemList.value.filter((item) =>
+    item.text.includes(searchText)
+  );
 };
 </script>

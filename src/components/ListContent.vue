@@ -18,11 +18,9 @@ import { ref } from "vue";
 import axios from "axios";
 import { useStore } from "vuex";
 import { provide } from "vue";
-
 const store = useStore();
 
 const itemList = ref([]);
-
 axios
   .get(`http://localhost:3000/itemList?userId=${store.state.user.id}`)
   .then((get_response) => {

@@ -14,7 +14,7 @@
   </div>
 </template>
 <script setup>
-import { ref } from "vue";
+import { ref} from "vue";
 import axios from "axios";
 import { useStore } from "vuex";
 import { inject } from "vue";
@@ -34,13 +34,13 @@ const addItem = () => {
       itemList.value.push({
         id: new Date().getTime(),
         text: addText.value,
-        itemId: new Date().getTime()+1,
+        itemId: new Date().getTime() + 1,
         userId: store.state.user.id,
       });
       axios.post("http://localhost:3000/itemList", {
         id: new Date().getTime(),
         text: addText.value,
-        itemId: new Date().getTime()+1,
+        itemId: new Date().getTime() + 1,
         userId: store.state.user.id,
       });
       addText.value = "";

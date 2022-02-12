@@ -383,7 +383,29 @@ form .input-box {
     opacity: 0.9;
 }
 
+.search-form {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
 
+.search-input {
+    background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),transparent;
+    color: #fff;
+    margin-top: 10px;
+    padding: 10px 10px;
+    border: 2px solid #fff;
+    border-radius: 20px;
+    outline: none;
+    text-align: center;
+    font-size: 16px;
+}
+
+.search-input::placeholder {
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+}
 /* FASTTYPİNG */
 
 .fastTypingContainer {
@@ -873,7 +895,7 @@ main .search-box .search-bar::placeholder{
 }
 
 .settingsContent .row .col{
-    flex-basis: 40%;
+    flex-basis: 50%;
 }
 
 .settingsContent .row .col .accountInfo{
